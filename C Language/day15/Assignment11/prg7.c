@@ -1,4 +1,4 @@
-// Write a C program to subtract two matrices.
+// Write a C program to check whether two matrices are equal or not.
 
 #include <stdio.h>
 
@@ -12,7 +12,8 @@ int main() {
     printf("Enter number of columns: ");
     scanf("%d", &col);
 
-    int a[row][col], b[row][col], subtract[row][col];
+    int a[row][col], b[row][col];
+    int equal = 1;
 
     printf("\nEnter elements of First Matrix:\n");
     for(int i = 0; i < row; i++) {
@@ -28,20 +29,22 @@ int main() {
         }
     }
 
-    // Addition of matrices
+    // Check equality
     for(int i = 0; i < row; i++) {
         for(int j = 0; j < col; j++) {
-            subtract[i][j] = a[i][j] - b[i][j];
+            if(a[i][j] != b[i][j]) {
+                equal = 0;
+                break;
+            }
         }
+        if(equal == 0)
+            break;
     }
 
-    printf("\nSum of Matrices:\n");
-    for(int i = 0; i < row; i++) {
-        for(int j = 0; j < col; j++) {
-            printf("%d ", subtract[i][j]);
-        }
-        printf("\n");
-    }
+    if(equal)
+        printf("\nMatrices are Equal.\n");
+    else
+        printf("\nMatrices are Not Equal.\n");
 
     return 0;
 }
