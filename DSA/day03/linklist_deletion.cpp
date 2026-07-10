@@ -38,6 +38,7 @@ public:
     void delatend();
     void delbefore();
     void delafter();
+    void reverse();
 };
 
 int main()
@@ -78,10 +79,10 @@ int main()
             l1.count();
             break;
         case 6:
-            //				sort();
+            //	sort();
             break;
         case 7:
-            //				reverse ( );
+            // reverse ( );
             break;
         case 8:
             choice1 = 'n';
@@ -141,6 +142,7 @@ void LinkedList::insert()
 
     } while (choice2 == 'y');
 } // Last Line
+                                    // insert at beg
 
 void LinkedList::atbeg()
 {
@@ -163,7 +165,7 @@ void LinkedList::atbeg()
 
     cout << "Node inserted successfully.\n";
 }
-
+                                    // count nodes
 void LinkedList::count()
 {
     Node *temp = start;
@@ -177,6 +179,7 @@ void LinkedList::count()
 
     cout << "Total number of nodes = " << cnt << endl;
 }
+                            // insert at end
 
 void LinkedList::atend()
 {
@@ -205,6 +208,7 @@ void LinkedList::atend()
 
     cout << "Node inserted successfully.\n";
 }
+                                    // display
 
 void LinkedList::display()
 {
@@ -221,6 +225,8 @@ void LinkedList::display()
     }
     printf("NULL");
 }
+                                    // insert before node
+
 void LinkedList::before()
 {
     int pos, val;
@@ -266,6 +272,8 @@ void LinkedList::before()
 
     cout<<"Node inserted successfully";
 }
+                                    // insert after node
+
 void LinkedList::after()
 {
     int pos, val;
@@ -329,7 +337,7 @@ void LinkedList::del()
             delafter();
             break;
         case 5:
-            //				atpos ( );
+            //delatpos( );
             break;
         case 6:
             choice2 = 'n';
@@ -339,6 +347,7 @@ void LinkedList::del()
         }
     } while (choice2 == 'y');
 } // Last Line
+                                    // delete at beg
 
 void LinkedList::delatbeg()
 {
@@ -357,6 +366,7 @@ void LinkedList::delatbeg()
 
     cout << "Node deleted successfully.\n";
 }
+                                // delete at end
 
 void LinkedList::delatend()
 {
@@ -378,7 +388,7 @@ void LinkedList::delatend()
     }
     cout << "Node deleted successfully.\n";
 }
-
+                                    // delete before node
 
 void LinkedList::delbefore()
 {
@@ -403,7 +413,7 @@ void LinkedList::delbefore()
     Node *temp1 = nullptr;
     Node *temp2 = nullptr;
 
-    while(temp != nullptr && temp->next->num != val)
+    while(temp->next!= nullptr && temp->next->num != val)
     {
         temp2 = temp1;
         temp1 = temp;
@@ -435,6 +445,7 @@ void LinkedList::delbefore()
 
     cout << "Node deleted successfully.";
 }
+                            // delete after node
 
 void LinkedList::delafter(){
     int val;
@@ -470,4 +481,28 @@ void LinkedList::delafter(){
 
     cout<<"Node delete successfully";
 }
-    
+                                    // reverse node
+
+void LinkedList::reverse()
+{
+    if (start == nullptr || start->next == nullptr)
+    {
+        printf("Linked List is Empty or has only one node.");
+        return;
+    }
+
+    Node *prev = nullptr;
+    Node *curr = start;
+    Node *next_node = nullptr;
+
+    while (curr != nullptr)
+    {
+        next_node = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next_node;
+    }
+
+    start = prev;
+    printf("Linked List reversed.");
+}

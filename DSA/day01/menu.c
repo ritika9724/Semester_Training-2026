@@ -4,6 +4,7 @@
 
 struct linklist // self ref. structure
 {
+	
 	int num;    // data       
 	struct linklist *next;
 };
