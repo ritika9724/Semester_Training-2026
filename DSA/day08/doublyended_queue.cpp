@@ -49,7 +49,7 @@ class Queue{
         cout<<"data inserted !!\n";
     }
 
-                            // deletion(dequeue)
+                                        // deletion at front 
     
     void dequeueatfront(){
         if(front == -1){
@@ -64,7 +64,8 @@ class Queue{
             front = rear = - 1;
         }
     }
-
+                                        // deletion at rear
+                                        
      void dequeueatrear(){
         if(front == -1){
             cout<<"Queue is empty !!\n";
@@ -111,7 +112,6 @@ class Queue{
     }
 }
 };
-
 
 int main( )
 {

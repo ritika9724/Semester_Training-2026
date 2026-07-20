@@ -18,15 +18,16 @@ class Queue{
         cout<<"Enter value of Q : ";
         cin>>val;
         if(front == -1 || rear == -1){
-            arr[++rear] = val;
-            front++;
+            front = rear = 0;
+            arr[rear] = val;
         }
-        else if(rear == size-1){
+        else if((rear+1)%size == front){
             cout<<"Queue is full !!\n";
             return;
         }
         else{
-              arr[++rear] = val;
+            rear = rear+1%size;
+              arr[rear] = val;
         }
         cout<<"data inserted !!\n";
     }
@@ -40,7 +41,7 @@ class Queue{
         }
         else{
             cout<<arr[front]<<endl<<" deleted !!\n";
-            front++;
+            front = (front+1)%size;
         }
         if(front>rear){
             front = rear = - 1;
@@ -49,25 +50,22 @@ class Queue{
                             // is Full
 
     bool isFull(){
-        if(rear == size -1){
+        if((rear+1)%size == front){
             return true;
-        }else{
         return false;
         }
+        cout<<"Stack is Full";
     }
                         // is Empty
     bool isEmpty(){
         if(front == -1){
             return true;
-        }else{
         return false;    
         }
         cout<<"Queue is empty ";
     }
 
-    void display()
-{
-
+    void display(){
     if (front == -1)
     {
         printf("Queue is Empty.");
@@ -110,10 +108,16 @@ int main( )
 				q1.display();
 				break;
 			case 4:
-				q1.isEmpty ( );
+				if(q1.isEmpty())
+                 cout << "Queue is Empty.\n";
+            else
+                cout << "Queue is Not Empty.\n";
 				break;
 			case 5:
-				q1.isFull ( );
+				if (q1.isFull())
+                 cout << "Queue is Full.\n";
+            else
+                cout << "Queue is Not Full.\n";
 				break;
 			case 6:
 				choice='n';
