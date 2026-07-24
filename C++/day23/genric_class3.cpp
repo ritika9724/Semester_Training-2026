@@ -10,7 +10,6 @@ class A{
     A (T1 a , T2 b){
         num1 = a;
         num2 = b;
-
     }
 
     void show(){

@@ -18,7 +18,7 @@ int main()
     do
     {
         printf("\n***** MAIN MENU *****");
-        printf("\n1. Insert");
+        printf("\n1. Insert");  
         printf("\n2. Delete");
         printf("\n3. Peek");
         printf("\n4. Display");
